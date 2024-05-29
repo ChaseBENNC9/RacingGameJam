@@ -1,0 +1,8 @@
+# Description 
+This is the Second Game Jam Project for the Game Development Paper in the BIT.
+It is a racing game where you can replay the game to try beat your high score
+# Features
+Coming Soon
+# Developers
+- [Erika Stuart](https://github.com/erokasyuart) 
+- [Chase Bennett-Hill](https://github.com/ChaseBENNC9)
