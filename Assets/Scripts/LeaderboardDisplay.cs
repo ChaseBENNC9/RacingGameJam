@@ -6,16 +6,23 @@ using UnityEngine.UI;
 
 public class LeaderboardDisplay : MonoBehaviour
 {
+    public PlayerInfo newPlayer;
     public TextMeshProUGUI text1;
     public TextMeshProUGUI text2;
     public TextMeshProUGUI text3;
     public TextMeshProUGUI text4;
     public TextMeshProUGUI text5;
     private List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
+    public TMP_InputField nameInput;
 
-    void Start()
+    void Start() {
+        DisplayToScreen();
+     }
+
+    public void DisplayToScreen()
     {
         Leaderboard.LoadLeaderboard();
+
 
         texts.Add(text1);
         texts.Add(text2);
@@ -27,7 +34,10 @@ public class LeaderboardDisplay : MonoBehaviour
         {
             if (Leaderboard.GetLeaderboardEntry(i) != null)
             {
-                texts[i].text = Leaderboard.GetLeaderboardEntry(i).userName + " - " + Leaderboard.GetLeaderboardEntry(i).time;
+                texts[i].text =
+                    Leaderboard.GetLeaderboardEntry(i).userName
+                    + " - "
+                    + Leaderboard.GetLeaderboardEntry(i).time;
             }
             else
             {
@@ -36,5 +46,17 @@ public class LeaderboardDisplay : MonoBehaviour
         }
     }
 
+ 
 
+    public void CreateEntry()
+    {
+        Debug.Log("Creating entry");
+        PlayerInfo player = new PlayerInfo
+        {
+            userName = nameInput.text,
+            time = 20f
+        };
+        Leaderboard.AddPlayer(player);
+        DisplayToScreen();
+    }
 }

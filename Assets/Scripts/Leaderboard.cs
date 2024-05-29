@@ -24,6 +24,7 @@ public static class Leaderboard
     {
         topTimes.Add(player);
         SortLeaderboard();
+        SaveLeaderboard();
 
     }
 
@@ -44,21 +45,25 @@ public static class Leaderboard
         {
             PlayerInfo player = new()
             {
-                userName = PlayerPrefs.GetString(PlayerPrefsBaseKey + "[" + i + "].name", "Player " + i),
-                time = PlayerPrefs.GetFloat(PlayerPrefsBaseKey + "[" + i + "].time", 0)
+                userName = PlayerPrefs.GetString(PlayerPrefsBaseKey + "[" + i + "].name",""),
+                time = PlayerPrefs.GetFloat(PlayerPrefsBaseKey + "[" + i + "].time",1000000)
             };
-            topTimes.Add(player);
+                topTimes.Add(player);    
+                Debug.Log("Player: " + player.userName + " Time: " + player.time);                               
         }
         SortLeaderboard();
     }
 
     public static PlayerInfo GetLeaderboardEntry(int i)
     {
-        if (topTimes[i] == null)
+        if (topTimes[i] == null || topTimes[i].time == 1000000 || topTimes[i].userName == ""	)
         {
             return null;
         }
-        return topTimes[i];
+        else
+        {
+            return topTimes[i];
+        }
     }
 
 }
