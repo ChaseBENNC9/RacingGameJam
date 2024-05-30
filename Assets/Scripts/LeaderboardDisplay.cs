@@ -20,6 +20,7 @@ public class LeaderboardDisplay : MonoBehaviour
         Leaderboard.LoadLeaderboard();
 
 
+
         for (int i = 0; i < Leaderboard.maxDisplay; i++)
         {
   
@@ -49,9 +50,15 @@ public class LeaderboardDisplay : MonoBehaviour
         PlayerInfo player = new PlayerInfo
         {
             userName = nameInput.text,
-            time = 20f
+            time = Random.Range(25, 45)
         };
         Leaderboard.AddPlayer(player);
+        DisplayToScreen();
+    }
+
+    public void DeleteLeaderboard()
+    {
+        PlayerPrefs.DeleteAll();
         DisplayToScreen();
     }
 }
