@@ -6,13 +6,10 @@ using UnityEngine.UI;
 
 public class LeaderboardDisplay : MonoBehaviour
 {
-    public PlayerInfo newPlayer;
-    public TextMeshProUGUI text1;
-    public TextMeshProUGUI text2;
-    public TextMeshProUGUI text3;
-    public TextMeshProUGUI text4;
-    public TextMeshProUGUI text5;
-    private List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
+    private PlayerInfo newPlayer;
+
+    public GameObject container;
+    public GameObject textPrefab;
     public TMP_InputField nameInput;
     void Start() {
         DisplayToScreen();
@@ -23,24 +20,20 @@ public class LeaderboardDisplay : MonoBehaviour
         Leaderboard.LoadLeaderboard();
 
 
-        texts.Add(text1);
-        texts.Add(text2);
-        texts.Add(text3);
-        texts.Add(text4);
-        texts.Add(text5);
-
         for (int i = 0; i < Leaderboard.maxDisplay; i++)
         {
+  
+                GameObject inst = Instantiate(textPrefab, transform);
+                inst.transform.SetParent(container.transform);
+               TextMeshProUGUI leaderboardText = inst.GetComponent<TextMeshProUGUI>();
             if (Leaderboard.GetLeaderboardEntry(i) != null)
             {
-                texts[i].text =
-                    Leaderboard.GetLeaderboardEntry(i).userName
-                    + " - "
-                    + Leaderboard.GetLeaderboardEntry(i).time;
+
+                leaderboardText.text = Leaderboard.GetLeaderboardEntry(i).userName + " " + Leaderboard.GetLeaderboardEntry(i).time;
             }
             else
             {
-                texts[i].text = "";
+                 leaderboardText.text = "";
             }
         }
     }
@@ -53,7 +46,6 @@ public class LeaderboardDisplay : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Creating entry");
         PlayerInfo player = new PlayerInfo
         {
             userName = nameInput.text,
