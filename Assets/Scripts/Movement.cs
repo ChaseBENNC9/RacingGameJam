@@ -19,9 +19,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector3(direction.x * speed, 0, direction.z * speed);
-
+        //rb.velocity = new Vector3(direction.x * speed, 0, direction.z * speed);
+        transform.Translate(direction * speed * Time.deltaTime, Space.Self);
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * moveInput.x);
+
     }
 
     public void Forwards(InputAction.CallbackContext context)
