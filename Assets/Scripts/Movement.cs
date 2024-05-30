@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     private int speed = 5;
+    private int rotationSpeed = 100;
     private Vector2 moveInput;
     private Vector3 direction;
     private Rigidbody rb;
@@ -19,6 +20,8 @@ public class Movement : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector3(direction.x * speed, 0, direction.z * speed);
+
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime * moveInput.x);
     }
 
     public void Forwards(InputAction.CallbackContext context)
