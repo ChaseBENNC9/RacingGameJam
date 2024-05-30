@@ -14,7 +14,6 @@ public class LeaderboardDisplay : MonoBehaviour
     public TextMeshProUGUI text5;
     private List<TextMeshProUGUI> texts = new List<TextMeshProUGUI>();
     public TMP_InputField nameInput;
-
     void Start() {
         DisplayToScreen();
      }
@@ -50,6 +49,10 @@ public class LeaderboardDisplay : MonoBehaviour
 
     public void CreateEntry()
     {
+        if (nameInput.text == "")
+        {
+            return;
+        }
         Debug.Log("Creating entry");
         PlayerInfo player = new PlayerInfo
         {
