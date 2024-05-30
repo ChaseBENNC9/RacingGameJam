@@ -19,7 +19,11 @@ public class LeaderboardDisplay : MonoBehaviour
     {
         Leaderboard.LoadLeaderboard();
 
-
+                foreach (Transform child in container.transform)
+                {
+                    if (child.tag == "leaderboardEntry")
+                        Destroy(child.gameObject);
+                }
 
         for (int i = 0; i < Leaderboard.maxDisplay; i++)
         {
