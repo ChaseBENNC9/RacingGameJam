@@ -46,10 +46,9 @@ public static class Leaderboard
             PlayerInfo player = new()
             {
                 userName = PlayerPrefs.GetString(PlayerPrefsBaseKey + "[" + i + "].name",""),
-                time = PlayerPrefs.GetFloat(PlayerPrefsBaseKey + "[" + i + "].time",1000000)
+                time = PlayerPrefs.GetFloat(PlayerPrefsBaseKey + "[" + i + "].time",1000000) //Sets to large number so the blank entries are at the bottom
             };
                 topTimes.Add(player);    
-                Debug.Log("Player: " + player.userName + " Time: " + player.time);                               
         }
         SortLeaderboard();
     }
