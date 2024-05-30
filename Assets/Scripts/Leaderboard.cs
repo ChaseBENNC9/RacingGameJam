@@ -1,3 +1,12 @@
+///<remarks>
+/// Author: Chase Bennett - Hill
+/// Date Created: 30 / 05 / 24
+/// Bug: None at the moment
+///<remarks>
+// <summary>
+/// This is a static class and is used to store the leaderboard information and saves it to the player prefs
+/// </summary>
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

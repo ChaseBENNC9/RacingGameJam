@@ -1,3 +1,15 @@
+/// <summary>
+/// This script is responsible for displaying the leaderboard to the screen
+/// It displays the top 5 times and names
+/// </summary>
+///<remarks>
+/// Author: Chase Bennett - Hill
+/// Date Created: 30 / 05 / 24
+/// Bug: None at the moment
+/// Notes: There is a temporary time value for the player time and the add player will be moved to be at the endscreen.
+/// The Delete data is also temporary and will be either removed or moved to the settings screen
+///<remarks>
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,17 +18,17 @@ using UnityEngine.UI;
 
 public class LeaderboardDisplay : MonoBehaviour
 {
-    private PlayerInfo newPlayer;
 
     public GameObject container;
     public GameObject textPrefab;
     public TMP_InputField nameInput;
+
+
     void Start() {
         DisplayToScreen();
      }
 
-    public void DisplayToScreen()
-    {
+    public void DisplayToScreen() {
         Leaderboard.LoadLeaderboard();
 
                 foreach (Transform child in container.transform)
@@ -51,7 +63,7 @@ public class LeaderboardDisplay : MonoBehaviour
         {
             return;
         }
-        PlayerInfo player = new PlayerInfo
+        PlayerInfo player = new ()
         {
             userName = nameInput.text,
             time = Random.Range(25, 45)
