@@ -63,12 +63,12 @@ public class LeaderboardDisplay : MonoBehaviour
         {
             return;
         }
-        PlayerInfo player = new ()
+        LeaderboardEntry entry = new ()
         {
             userName = nameInput.text,
             time = Random.Range(25, 45)
         };
-        Leaderboard.AddPlayer(player);
+        Leaderboard.AddPlayer(entry);
         DisplayToScreen();
     }
 

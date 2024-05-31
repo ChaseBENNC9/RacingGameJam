@@ -14,7 +14,7 @@ using UnityEngine;
 public static class Leaderboard
 {
     public const int maxDisplay = 5;
-    public static List<PlayerInfo> topTimes = new List<PlayerInfo>();
+    public static List<LeaderboardEntry> topTimes = new List<LeaderboardEntry>();
     private const string PlayerPrefsBaseKey = "leaderboard";
 
 
@@ -29,7 +29,7 @@ public static class Leaderboard
     /// <summary>
     /// Adds a player to the leaderboard
     /// </summary>
-    public static void AddPlayer(PlayerInfo player)
+    public static void AddPlayer(LeaderboardEntry player)
     {
         topTimes.Add(player);
         SortLeaderboard();
@@ -52,7 +52,7 @@ public static class Leaderboard
         topTimes.Clear();
         for (int i = 0; i < maxDisplay; i++)
         {
-            PlayerInfo player = new()
+            LeaderboardEntry player = new()
             {
                 userName = PlayerPrefs.GetString(PlayerPrefsBaseKey + "[" + i + "].name",""),
                 time = PlayerPrefs.GetFloat(PlayerPrefsBaseKey + "[" + i + "].time",1000000) //Sets to large number so the blank entries are at the bottom
@@ -62,7 +62,7 @@ public static class Leaderboard
         SortLeaderboard();
     }
 
-    public static PlayerInfo GetLeaderboardEntry(int i)
+    public static LeaderboardEntry GetLeaderboardEntry(int i)
     {
         if (topTimes[i] == null || topTimes[i].time == 1000000 || topTimes[i].userName == ""	)
         {
