@@ -37,7 +37,7 @@ public class LeaderboardDisplay : MonoBehaviour
                         Destroy(child.gameObject);
                 }
 
-        for (int i = 0; i < Leaderboard.maxDisplay; i++)
+        for (int i = 0; i < Leaderboard.maxEntries; i++)
         {
   
                 GameObject inst = Instantiate(textPrefab, transform);

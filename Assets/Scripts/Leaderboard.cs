@@ -13,9 +13,9 @@ using UnityEngine;
 
 public static class Leaderboard
 {
-    public const int maxDisplay = 5;
-    public static List<LeaderboardEntry> topTimes = new List<LeaderboardEntry>();
-    private const string PlayerPrefsBaseKey = "leaderboard";
+    public const int maxEntries = 5; //The Max number of entries to store in the leaderboard
+    public static List<LeaderboardEntry> topTimes = new List<LeaderboardEntry>(); //The Global list of the top times stored into the local player prefs
+    private const string PlayerPrefsBaseKey = "leaderboard"; //The base key for the player prefs for easy reference
 
 
     /// <summary>
@@ -39,7 +39,7 @@ public static class Leaderboard
 
     private static void SaveLeaderboard()
     {
-        for (int i = 0; i < maxDisplay; i++)
+        for (int i = 0; i < maxEntries; i++)
         {
             var player = topTimes[i];
             PlayerPrefs.SetString(PlayerPrefsBaseKey + "[" + i + "].name", player.userName);
@@ -50,7 +50,7 @@ public static class Leaderboard
     public static void LoadLeaderboard()
     {
         topTimes.Clear();
-        for (int i = 0; i < maxDisplay; i++)
+        for (int i = 0; i < maxEntries; i++)
         {
             LeaderboardEntry player = new()
             {
