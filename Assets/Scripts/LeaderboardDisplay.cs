@@ -1,5 +1,5 @@
 /// <summary>
-/// This script is responsible for displaying the leaderboard to the screen
+/// This script is responsible for displaying the all the entries to the screen
 /// It displays the top 5 times and names
 /// </summary>
 ///<remarks>
@@ -42,15 +42,14 @@ public class LeaderboardDisplay : MonoBehaviour
   
                 GameObject inst = Instantiate(textPrefab, transform);
                 inst.transform.SetParent(container.transform);
-               TextMeshProUGUI leaderboardText = inst.GetComponent<TextMeshProUGUI>();
+                LeaderboardDisplayEntry entry = inst.GetComponent<LeaderboardDisplayEntry>();
             if (Leaderboard.GetLeaderboardEntry(i) != null)
             {
-
-                leaderboardText.text = Leaderboard.GetLeaderboardEntry(i).userName + " " + Leaderboard.GetLeaderboardEntry(i).time;
+                entry.NewEntry(i + 1, Leaderboard.GetLeaderboardEntry(i).userName, Leaderboard.GetLeaderboardEntry(i).time);
             }
             else
             {
-                 leaderboardText.text = "";
+                entry.BlankEntry();
             }
         }
     }
