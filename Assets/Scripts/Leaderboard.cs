@@ -17,7 +17,6 @@ public static class Leaderboard
     public static List<LeaderboardEntry> topTimes = new List<LeaderboardEntry>(); //The Global list of the top times stored into the local player prefs
     private const string PlayerPrefsBaseKey = "leaderboard"; //The base key for the player prefs for easy reference
 
-
     /// <summary>
     /// Sorts the leaderboard by the times
     /// </summary>
@@ -34,13 +33,11 @@ public static class Leaderboard
         topTimes.Add(player);
         SortLeaderboard();
         SaveLeaderboard();
-
     }
 
-
-/// <summary>
-/// Saves the leaderboard data to the player prefs
-/// </summary>
+    /// <summary>
+    /// Saves the leaderboard data to the player prefs
+    /// </summary>
     private static void SaveLeaderboard()
     {
         for (int i = 0; i < maxEntries; i++)
@@ -51,32 +48,33 @@ public static class Leaderboard
         }
     }
 
-/// <summary>
-/// Loads the leaderboard data from the player prefs
-/// </summary>
+    /// <summary>
+    /// Loads the leaderboard data from the player prefs
+    /// </summary>
     public static void LoadLeaderboard()
     {
         topTimes.Clear();
         for (int i = 0; i < maxEntries; i++)
         {
-            LeaderboardEntry player = new()
-            {
-                userName = PlayerPrefs.GetString(PlayerPrefsBaseKey + "[" + i + "].name",""),
-                time = PlayerPrefs.GetFloat(PlayerPrefsBaseKey + "[" + i + "].time",1000000) //Sets to large number so the blank entries are at the bottom
-            };
-                topTimes.Add(player);    
+            LeaderboardEntry player =
+                new()
+                {
+                    userName = PlayerPrefs.GetString(PlayerPrefsBaseKey + "[" + i + "].name", ""),
+                    time = PlayerPrefs.GetFloat(PlayerPrefsBaseKey + "[" + i + "].time", 1000000) //Sets to large number so the blank entries are at the bottom
+                };
+            topTimes.Add(player);
         }
         SortLeaderboard();
     }
 
-/// <summary >
-/// Gets the leaderboard entry at the specified index
-/// </summary>
-///<param name="i">The index of the entry to get</param>
+    /// <summary >
+    /// Gets the leaderboard entry at the specified index
+    /// </summary>
+    ///<param name="i">The index of the entry to get</param>
 
     public static LeaderboardEntry GetLeaderboardEntry(int i)
     {
-        if (topTimes[i] == null || topTimes[i].time == 1000000 || topTimes[i].userName == ""	)
+        if (topTimes[i] == null || topTimes[i].time == 1000000 || topTimes[i].userName == "")
         {
             return null;
         }
@@ -86,22 +84,21 @@ public static class Leaderboard
         }
     }
 
-/// <summary>
-/// Formats the time into mm:ss
-/// </summary>
-/// <param name="time">time in seconds</param>
-/// <returns>the formatted time</returns>
-        public static string FormatTime(float time)
+    /// <summary>
+    /// Formats the time into mm:ss
+    /// </summary>
+    /// <param name="time">time in seconds</param>
+    /// <returns>the formatted time</returns>
+    public static string FormatTime(float time)
     {
         return string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), time % 60);
     }
 
-
-/// <summary>
-/// Gets the rank of the player
-/// </summary>
-/// <param name="time">The time of the player</param>
-/// <returns>The rank of the player if in the top x otherwise 0</returns>
+    /// <summary>
+    /// Gets the rank of the player
+    /// </summary>
+    /// <param name="time">The time of the player</param>
+    /// <returns>The rank of the player if in the top x otherwise 0</returns>
     public static int GetRank(float time)
     {
         for (int i = 0; i < maxEntries; i++)
@@ -113,5 +110,4 @@ public static class Leaderboard
         }
         return 0;
     }
-
 }

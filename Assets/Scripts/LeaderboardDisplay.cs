@@ -18,34 +18,40 @@ using UnityEngine.UI;
 
 public class LeaderboardDisplay : MonoBehaviour
 {
-
     public GameObject container;
     public GameObject textPrefab;
     public TMP_InputField nameInput;
 
-
-    void Start() {
+    void Start()
+    {
         DisplayToScreen();
-     }
+    }
 
-    public void DisplayToScreen() {
+    /// <summary>
+    /// This function displays all leaderboard entries to the screen
+    /// </summary>
+    public void DisplayToScreen()
+    {
         Leaderboard.LoadLeaderboard();
 
-                foreach (Transform child in container.transform)
-                {
-                    if (child.tag == "leaderboardEntry")
-                        Destroy(child.gameObject);
-                }
+        foreach (Transform child in container.transform)
+        {
+            if (child.tag == "leaderboardEntry")
+                Destroy(child.gameObject);
+        }
 
         for (int i = 0; i < Leaderboard.maxEntries; i++)
         {
-  
-                GameObject inst = Instantiate(textPrefab, transform);
-                inst.transform.SetParent(container.transform);
-                LeaderboardDisplayEntry entry = inst.GetComponent<LeaderboardDisplayEntry>();
+            GameObject inst = Instantiate(textPrefab, transform);
+            inst.transform.SetParent(container.transform);
+            LeaderboardDisplayEntry entry = inst.GetComponent<LeaderboardDisplayEntry>();
             if (Leaderboard.GetLeaderboardEntry(i) != null)
             {
-                entry.NewEntry(i + 1, Leaderboard.GetLeaderboardEntry(i).userName, Leaderboard.GetLeaderboardEntry(i).time);
+                entry.NewEntry(
+                    i + 1,
+                    Leaderboard.GetLeaderboardEntry(i).userName,
+                    Leaderboard.GetLeaderboardEntry(i).time
+                );
             }
             else
             {
@@ -54,10 +60,9 @@ public class LeaderboardDisplay : MonoBehaviour
         }
     }
 
- 
-
-
-
+    /// <summary>
+    /// This function deletes all leaderboard entries
+    /// </summary>
     public void DeleteLeaderboard()
     {
         PlayerPrefs.DeleteAll();

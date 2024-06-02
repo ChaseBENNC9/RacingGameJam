@@ -42,5 +42,4 @@ public class Movement : MonoBehaviour
         moveInput = context.ReadValue<Vector2>();
         direction = new Vector3(moveInput.x, 0, moveInput.y);
     }
-
 }
