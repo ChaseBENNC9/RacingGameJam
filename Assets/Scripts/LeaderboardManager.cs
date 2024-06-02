@@ -6,9 +6,15 @@ public class LeaderboardManager : MonoBehaviour
 {
     public TMP_InputField nameInput;
     public GameObject leaderboardEntry;
+    public GameObject leaderboardPanel;
     public LeaderboardDisplayEntry entryInfo;
+    public TextMeshProUGUI timeDisplay;
+    public TextMeshProUGUI endMessage;
     void Start()
     {
+        timeDisplay.text = Leaderboard.FormatTime(RaceManager.instance.GetRaceTime());
+        timeDisplay.transform.parent.gameObject.SetActive(false);
+        endMessage.text = "Congratulations, you made it to the leaderboard! Enter your name to save your time.";
         if (CheckInTopFive(RaceManager.instance.GetRaceTime()))
         {
             leaderboardEntry.gameObject.SetActive(true);
@@ -17,7 +23,9 @@ public class LeaderboardManager : MonoBehaviour
         }
         else
         {
-            leaderboardEntry.gameObject.SetActive(false);
+            endMessage.text = "You didn't make it to the leaderboard. Better luck next time!";
+            timeDisplay.transform.parent.gameObject.SetActive(true);
+            ShowLeaderboard();
         }
     }
 
@@ -45,5 +53,14 @@ public class LeaderboardManager : MonoBehaviour
         Leaderboard.AddPlayer(entry);
     }
 
+
+    public void ShowLeaderboard()
+    {
+        leaderboardEntry.gameObject.SetActive(false);
+        leaderboardPanel.gameObject.SetActive(true);
+        LeaderboardDisplay lbd = leaderboardPanel.GetComponent<LeaderboardDisplay>();
+        lbd.DisplayToScreen();
+
+}
 }
 
