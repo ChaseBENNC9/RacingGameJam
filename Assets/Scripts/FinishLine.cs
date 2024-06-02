@@ -9,7 +9,8 @@ public class FinishLine : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player has crossed the finish line!");
+            RaceTimer.instance.EndRace();
+            Debug.Log("Player has crossed the finish line with a time of " + Leaderboard.FormatTime(RaceTimer.instance.GetRaceTime()));
         }
     }
 }
