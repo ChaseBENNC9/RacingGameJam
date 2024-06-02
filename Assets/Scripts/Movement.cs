@@ -16,7 +16,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    private int speed = 15;
+    private int speed = 20;
     private int rotationSpeed = 100;
     private Vector2 moveInput;
     private Vector3 direction;

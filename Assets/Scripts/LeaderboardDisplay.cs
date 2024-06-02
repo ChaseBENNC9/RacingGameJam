@@ -56,20 +56,7 @@ public class LeaderboardDisplay : MonoBehaviour
 
  
 
-    public void CreateEntry()
-    {
-        if (nameInput.text == "")
-        {
-            return;
-        }
-        LeaderboardEntry entry = new ()
-        {
-            userName = nameInput.text,
-            time = Random.Range(25, 45)
-        };
-        Leaderboard.AddPlayer(entry);
-        DisplayToScreen();
-    }
+
 
     public void DeleteLeaderboard()
     {

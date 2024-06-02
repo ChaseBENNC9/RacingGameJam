@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class RaceTimer : MonoBehaviour
+public class RaceManager : MonoBehaviour
 {
     private float raceTime = 0.0f;
     private int currentLap = 1;
     private bool isRacing = false;
-    public static RaceTimer instance;
+    public static RaceManager instance;
     public TextMeshProUGUI timerText;
+    public GameObject endScreen;
     // Start is called before the first frame update
     void Awake()
     {
@@ -49,6 +50,7 @@ public class RaceTimer : MonoBehaviour
     public void EndRace()
     {
         isRacing = false;
+        endScreen.SetActive(true);
     }
     public float GetRaceTime()
     {

@@ -37,6 +37,10 @@ public static class Leaderboard
 
     }
 
+
+/// <summary>
+/// Saves the leaderboard data to the player prefs
+/// </summary>
     private static void SaveLeaderboard()
     {
         for (int i = 0; i < maxEntries; i++)
@@ -47,6 +51,9 @@ public static class Leaderboard
         }
     }
 
+/// <summary>
+/// Loads the leaderboard data from the player prefs
+/// </summary>
     public static void LoadLeaderboard()
     {
         topTimes.Clear();
@@ -62,6 +69,11 @@ public static class Leaderboard
         SortLeaderboard();
     }
 
+/// <summary >
+/// Gets the leaderboard entry at the specified index
+/// </summary>
+///<param name="i">The index of the entry to get</param>
+
     public static LeaderboardEntry GetLeaderboardEntry(int i)
     {
         if (topTimes[i] == null || topTimes[i].time == 1000000 || topTimes[i].userName == ""	)
@@ -74,9 +86,32 @@ public static class Leaderboard
         }
     }
 
+/// <summary>
+/// Formats the time into mm:ss
+/// </summary>
+/// <param name="time">time in seconds</param>
+/// <returns>the formatted time</returns>
         public static string FormatTime(float time)
     {
         return string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), time % 60);
+    }
+
+
+/// <summary>
+/// Gets the rank of the player
+/// </summary>
+/// <param name="time">The time of the player</param>
+/// <returns>The rank of the player if in the top x otherwise 0</returns>
+    public static int GetRank(float time)
+    {
+        for (int i = 0; i < maxEntries; i++)
+        {
+            if (time < topTimes[i].time)
+            {
+                return i + 1;
+            }
+        }
+        return 0;
     }
 
 }

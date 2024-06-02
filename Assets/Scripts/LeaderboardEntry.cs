@@ -4,7 +4,7 @@
 /// Bug: None at the moment
 ///<remarks>
 // <summary>
-/// This is a  class and is used to store the info about each entry to the leaderboard
+/// This class is used to store the info about each entry to the leaderboard
 /// </summary>
 public class LeaderboardEntry
 {
