@@ -18,7 +18,7 @@ public class LeaderboardDisplayEntry : MonoBehaviour
     {
         transform.Find("rank").GetComponent<TMPro.TextMeshProUGUI>().text = rank.ToString();
         transform.Find("name").GetComponent<TMPro.TextMeshProUGUI>().text = name;
-        transform.Find("time").GetComponent<TMPro.TextMeshProUGUI>().text = FormatTime(time);
+        transform.Find("time").GetComponent<TMPro.TextMeshProUGUI>().text = Leaderboard.FormatTime(time);
     }
     public void BlankEntry()
     {
@@ -27,8 +27,4 @@ public class LeaderboardDisplayEntry : MonoBehaviour
         transform.Find("time").GetComponent<TMPro.TextMeshProUGUI>().text = "";
     }
 
-    public string FormatTime(float time)
-    {
-        return string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), time % 60);
-    }
 }

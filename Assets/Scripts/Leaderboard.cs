@@ -74,4 +74,9 @@ public static class Leaderboard
         }
     }
 
+        public static string FormatTime(float time)
+    {
+        return string.Format("{0:00}:{1:00}", Mathf.Floor(time / 60), time % 60);
+    }
+
 }
