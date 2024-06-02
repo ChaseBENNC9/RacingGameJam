@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RaceManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class RaceManager : MonoBehaviour
     public static RaceManager instance;
     public TextMeshProUGUI timerText;
     public GameObject endScreen;
+    public float currentTime;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,27 +26,34 @@ public class RaceManager : MonoBehaviour
             Destroy(this);
         }
     }
+
     void Start()
     {
-        raceTime = Time.time; 
-        StartRace();  
+        StartRace();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateTime();
+    }
+
+    public void UpdateTime()
+    {
         if (isRacing)
         {
-            if (Time.time > raceTime + 1)
+            if (Time.time > currentTime + 1)
             {
-                raceTime ++;
-                timerText.text = "Time: " + Leaderboard.FormatTime(raceTime);
+                currentTime = Time.time;
+                raceTime++;
+                timerText.text = Leaderboard.FormatTime(raceTime);
             }
         }
     }
 
     public void StartRace()
     {
+        currentTime = Time.time;
         isRacing = true;
     }
 
@@ -52,8 +62,14 @@ public class RaceManager : MonoBehaviour
         isRacing = false;
         endScreen.SetActive(true);
     }
+
     public float GetRaceTime()
     {
         return raceTime;
+    }
+
+    public void ResetRace()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
