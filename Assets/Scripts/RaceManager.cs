@@ -12,16 +12,28 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements.Experimental;
 
 public class RaceManager : MonoBehaviour
 {
     private float raceTime = 0.0f;
     private int currentLap = 1;
-    private bool isRacing = false;
+    private bool isRacing
+    {
+        get { return isRacing; }
+        set
+        {
+            if (value)
+            {
+                GameManager.currentGameState = GameState.Racing;
+            }
+        }
+    }
     public static RaceManager instance;
     public TextMeshProUGUI timerText;
     public GameObject endScreen;
-    public float currentTime;
+    private float currentTime;
+    private float countdownTime = 3.0f;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,7 +50,8 @@ public class RaceManager : MonoBehaviour
 
     void Start()
     {
-        StartRace();
+        GameManager.currentGameState = GameState.PreGame;
+        timerText.text = countdownTime.ToString();
     }
 
     // Update is called once per frame
@@ -47,50 +60,64 @@ public class RaceManager : MonoBehaviour
         UpdateTime();
     }
 
-
-/// <summary>
-/// This function updates the timer every second
-/// </summary>
+    /// <summary>
+    /// This function updates the timer every second
+    /// </summary>
     public void UpdateTime()
     {
-        if (isRacing)
+        if (GameManager.currentGameState == GameState.Racing)
         {
             if (Time.time > currentTime + 1)
             {
+                timerText.text = Leaderboard.FormatTime(raceTime);
                 currentTime = Time.time;
                 raceTime++;
-                timerText.text = Leaderboard.FormatTime(raceTime);
+            }
+        }
+        else if (GameManager.currentGameState == GameState.PreGame)
+        {
+            if (Time.time > currentTime + 1)
+            {
+                countdownTime--;
+                timerText.text = countdownTime.ToString();
+                currentTime = Time.time;
+                if (countdownTime <= 0)
+                {
+                    timerText.text = "GO!";
+                    StartRace();
+                }
             }
         }
     }
 
-/// <summary>
-/// This function starts the race timer
-/// </summary>
+    /// <summary>
+    /// This function starts the race timer
+    /// </summary>
     public void StartRace()
     {
         currentTime = Time.time;
-        isRacing = true;
+        GameManager.currentGameState = GameState.Racing;
     }
 
-/// <summary>
-/// This function ends the race and shows the end panel
-/// </summary>
+    /// <summary>
+    /// This function ends the race and shows the end panel
+    /// </summary>
     public void EndRace()
     {
-        isRacing = false;
+        GameManager.currentGameState = GameState.End;
         endScreen.SetActive(true);
     }
 
-/// <summary>
-/// This function gets the current race time
-/// </summary>
-/// <returns>The current time
-/// </returns>
+    /// <summary>
+    /// This function gets the current race time
+    /// </summary>
+    /// <returns>The current time
+    /// </returns>
     public float GetRaceTime()
     {
         return raceTime;
     }
+
     /// <summary>
     /// This function resets the scene
     /// </summary>
