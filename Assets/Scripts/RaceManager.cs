@@ -11,8 +11,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RaceManager : MonoBehaviour
 {
@@ -35,7 +35,7 @@ public class RaceManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject endScreen;
     private float currentTime;
-    private float countdownTime = 2.0f;
+    private float countdownTime = 3.0f;
 
     // Start is called before the first frame update
     void Awake()
@@ -68,29 +68,30 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     public void UpdateTime()
     {
-        if (GameManager.currentGameState == GameState.Racing)
+        if (Time.time > currentTime + 1)
         {
-            if (Time.time > currentTime + 1)
+            if (GameManager.currentGameState == GameState.Racing)
             {
                 trafficLight.enabled = false;
-                timerText.text = Leaderboard.FormatTime(raceTime);
                 currentTime = Time.time;
                 raceTime++;
+                timerText.text = Leaderboard.FormatTime(raceTime);
             }
-        }
-        else if (GameManager.currentGameState == GameState.PreGame)
-        {
-            if (Time.time > currentTime + 1)
+            else if (GameManager.currentGameState == GameState.PreGame)
             {
-                countdownTime--;
-                trafficLight.sprite = frames[(int) countdownTime];
                 currentTime = Time.time;
-                if (countdownTime <= 0)
+                if (countdownTime <= 1)
                 {
+                    trafficLight.enabled = false;
                     StartRace();
+                    return;
                 }
+                countdownTime--;
+                if (countdownTime > 0)
+                    trafficLight.sprite = frames[(int)countdownTime - 1];
             }
         }
+
     }
 
     /// <summary>
