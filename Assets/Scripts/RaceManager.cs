@@ -17,7 +17,7 @@ using UnityEngine.SceneManagement;
 public class RaceManager : MonoBehaviour
 {
     private float raceTime = 0.0f;
-    public SpriteRenderer trafficLight;
+    public Image trafficLight;
     public List<Sprite> frames = new List<Sprite>();
     private int currentLap = 1;
     private bool isRacing
