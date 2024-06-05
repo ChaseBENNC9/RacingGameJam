@@ -35,11 +35,12 @@ public class RaceManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject endScreen;
     private float currentTime;
-    private float countdownTime = 3.0f;
+    private float countdownTime = 4.0f;
 
     // Start is called before the first frame update
     void Awake()
     {
+
         if (instance == null)
         {
             instance = this;
@@ -54,7 +55,6 @@ public class RaceManager : MonoBehaviour
     {
         GameManager.currentGameState = GameState.PreGame;
         trafficLight.enabled = true;
-        trafficLight.sprite = frames[frames.Count - 1];
     }
 
     // Update is called once per frame
