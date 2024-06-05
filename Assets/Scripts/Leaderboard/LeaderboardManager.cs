@@ -31,7 +31,6 @@ public class LeaderboardManager : MonoBehaviour
         if (CheckInTopFive(RaceManager.instance.GetRaceTime()))
         {
             leaderboardEntry.gameObject.SetActive(true);
-            Debug.Log(Leaderboard.GetRank(RaceManager.instance.GetRaceTime()));
             entryInfo.NewEntry(
                 Leaderboard.GetRank(RaceManager.instance.GetRaceTime()),
                 "",

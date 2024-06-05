@@ -20,7 +20,6 @@ public class LeaderboardDisplay : MonoBehaviour
 {
     public GameObject container;
     public GameObject textPrefab;
-    public TMP_InputField nameInput;
 
     void Start()
     {
@@ -60,12 +59,5 @@ public class LeaderboardDisplay : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// This function deletes all leaderboard entries
-    /// </summary>
-    public void DeleteLeaderboard()
-    {
-        PlayerPrefs.DeleteAll();
-        DisplayToScreen();
-    }
+
 }

@@ -19,18 +19,6 @@ public class RaceManager : MonoBehaviour
     private float raceTime = 0.0f;
     public Image trafficLight;
     public List<Sprite> frames = new List<Sprite>();
-    private int currentLap = 1;
-    private bool isRacing
-    {
-        get { return isRacing; }
-        set
-        {
-            if (value)
-            {
-                GameManager.currentGameState = GameState.Racing;
-            }
-        }
-    }
     public static RaceManager instance;
     public TextMeshProUGUI timerText;
     public GameObject endScreen;
