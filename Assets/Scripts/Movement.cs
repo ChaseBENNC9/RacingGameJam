@@ -16,7 +16,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    private int speed = 15;
+    private int speed = 20;
     private int rotationSpeed = 100;
     private Vector2 moveInput;
     private Vector3 direction;
@@ -39,8 +39,10 @@ public class Movement : MonoBehaviour
     /// When the player uses the input system, the player will move.
     public void Forwards(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
-        direction = new Vector3(moveInput.x, 0, moveInput.y);
+        if (GameManager.currentGameState == GameState.Racing)
+        {
+            moveInput = context.ReadValue<Vector2>();
+            direction = new Vector3(moveInput.x, 0, moveInput.y);
+        }
     }
-
 }
