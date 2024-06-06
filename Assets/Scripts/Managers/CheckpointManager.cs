@@ -1,9 +1,14 @@
-using System.Collections;
+///<summary>
+/// Manages the checkpoints in the level
+/// </summary>
+///<remarks>
+/// Author: Chase Bennett - Hill
+/// Date Created: 06 / 06 / 24
+/// Bug: None at the moment
+///<remarks>
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 
 
 public class CheckpointManager : MonoBehaviour
@@ -32,6 +37,10 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
+    ///<summary>   
+    /// Check if all checkpoints have been activated
+    /// </summary>
+    ///<returns>True if all checkpoints have been activated, false otherwise</returns>
 
     public bool AllCheckpointsActivated()
     {

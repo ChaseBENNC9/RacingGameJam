@@ -6,10 +6,6 @@
 /// Date Created: 01 / 06 / 24
 /// Bug: None at the moment
 ///<remarks>
-
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FinishLine : MonoBehaviour

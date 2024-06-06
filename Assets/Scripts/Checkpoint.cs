@@ -1,15 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+///<summary>
+/// Manages information about a single checkpoint
+/// </summary>
+///<remarks>
+/// Author: Chase Bennett - Hill
+/// Date Created: 06 / 06 / 24
+/// Bug: None at the moment
+///<remarks>
+
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 
 public class Checkpoint : MonoBehaviour
 {
-    public Material activatedMaterial;
-    public Material defaultMaterial;
-    private bool isActivated = false;
+    public Material activatedMaterial; //Material for when the checkpoint is activated
+    public Material defaultMaterial; //Material for when the checkpoint is not activated
+    private bool isActivated = false; //Boolean to check if the checkpoint is activated
     public bool IsActivated
     {
         get => isActivated; 
@@ -27,12 +32,12 @@ public class Checkpoint : MonoBehaviour
         }
     }
 
-    public float activatedTime = 0.0f;
+    public float activatedTime = 0.0f; //Time when the checkpoint was activated
 
 
 
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) //When the player triggers the checkpoint it is activated
 {
     if (other.CompareTag("Player"))
     {
