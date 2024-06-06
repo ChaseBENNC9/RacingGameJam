@@ -12,17 +12,17 @@ public class Checkpoint : MonoBehaviour
     private bool isActivated = false;
     public bool IsActivated
     {
-        get => isActivated;
+        get => isActivated; 
         set
         {
             isActivated = value;
-            if (isActivated)
+            if (isActivated) //When the value is changed it updates the material of the checkpoint corresponding to the value
             {
                 transform.GetComponentInChildren<MeshRenderer>().material = activatedMaterial;
             }
             else
             {
-                transform.GetComponent<MeshRenderer>().material = defaultMaterial;
+                transform.GetComponentInChildren<MeshRenderer>().material = defaultMaterial;
             }
         }
     }
