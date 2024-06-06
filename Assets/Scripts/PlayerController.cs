@@ -48,7 +48,10 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && CheckpointManager.inst.GetLastCheckpoint() != null)
+        {
             gameObject.transform.position = CheckpointManager.inst.GetLastCheckpoint().spawnPoint.position;
+            gameObject.transform.rotation = CheckpointManager.inst.GetLastCheckpoint().gameObject.transform.rotation;
+        }
     }
 }
