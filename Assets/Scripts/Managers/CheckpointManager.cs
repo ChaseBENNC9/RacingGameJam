@@ -8,6 +8,7 @@
 ///<remarks>
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class CheckpointManager : MonoBehaviour
 {
     private List<Checkpoint> checkpoints = new();
     public static CheckpointManager inst;
+    private Checkpoint lastCheckpoint;
     public TextMeshProUGUI checkpointText;
 
     void Awake()
@@ -74,6 +76,16 @@ public class CheckpointManager : MonoBehaviour
         }
         return true;
     }
+
+    public Checkpoint GetLastCheckpoint()
+    {
+        return lastCheckpoint;
+    }
+      public void SetLastCheckpoint(Checkpoint checkpoint)
+    {
+        lastCheckpoint = checkpoint;
+    }
+
 
 
 

@@ -9438,8 +9438,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1596666454}
-        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+      - m_Target: {fileID: 1596666458}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Forwards
         m_Mode: 0
         m_Arguments:
@@ -9452,12 +9452,34 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 85244f5e-a043-42e4-9c87-94b9d9c28124
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1596666458}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Respawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 746c8d63-17af-4db7-a5ce-2d744f5f62dc
+    m_ActionName: Player/Respawn[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1596666454
+--- !u!4 &1596666456 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4810912518991602692, guid: 19954de30401f73428254541a9ad156e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2068655596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1596666458
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9466,15 +9488,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1596666452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103c2d1d33b6a6b4bb327456ee828f92, type: 3}
+  m_Script: {fileID: 11500000, guid: 960760712d465184c82f7331ee9f3989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1596666456 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4810912518991602692, guid: 19954de30401f73428254541a9ad156e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2068655596}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1609255358
 GameObject:
   m_ObjectHideFlags: 0
@@ -12759,11 +12775,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4810912518991602691, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1596666454}
+      addedObject: {fileID: 1596666453}
     - targetCorrespondingSourceObject: {fileID: 4810912518991602691, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1596666453}
+      addedObject: {fileID: 1596666458}
     - targetCorrespondingSourceObject: {fileID: 4810912518023495582, guid: 19954de30401f73428254541a9ad156e,
         type: 3}
       insertIndex: -1
