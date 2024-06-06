@@ -24,6 +24,7 @@ public class Checkpoint : MonoBehaviour
             if (isActivated) //When the value is changed it updates the material of the checkpoint corresponding to the value
             {
                 transform.GetComponentInChildren<MeshRenderer>().material = activatedMaterial;
+                CheckpointManager.inst.UpdateCheckpointText();
             }
             else
             {

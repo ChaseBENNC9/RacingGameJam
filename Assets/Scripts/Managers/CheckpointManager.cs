@@ -7,7 +7,9 @@
 /// Bug: None at the moment
 ///<remarks>
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -15,6 +17,7 @@ public class CheckpointManager : MonoBehaviour
 {
     private List<Checkpoint> checkpoints = new();
     public static CheckpointManager inst;
+    public TextMeshProUGUI checkpointText;
 
     void Awake()
     {
@@ -34,6 +37,24 @@ public class CheckpointManager : MonoBehaviour
         foreach (Checkpoint checkpoint in checkpoints)
         {
             checkpoint.IsActivated = false;
+        }
+        UpdateCheckpointText();
+    }
+
+    public void UpdateCheckpointText()
+    {
+        List<Checkpoint> activatedCheckpoints = new();
+        foreach (Checkpoint checkpoint in checkpoints)
+        {
+            if (checkpoint.IsActivated)
+            {
+                activatedCheckpoints.Add(checkpoint);
+            }
+        }
+        checkpointText.text = "Checkpoints: \n" + activatedCheckpoints.Count + "/" + checkpoints.Count;
+        if (AllCheckpointsActivated())
+        {
+            checkpointText.color = Color.green;
         }
     }
 
