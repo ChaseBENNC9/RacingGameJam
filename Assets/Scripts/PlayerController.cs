@@ -15,10 +15,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))] //Ensures that the object always has a rigidbody component
-
 public class PlayerController : MonoBehaviour
 {
-    private int speed = 20; 
+    private int speed = 20;
     private int rotationSpeed = 100;
     private Vector2 moveInput;
     private Vector3 direction;
@@ -50,7 +49,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// When the player holds the respawn button, the player will respawn at the last checkpoint.
     /// </summary>
@@ -58,7 +56,6 @@ public class PlayerController : MonoBehaviour
     {
         if (CheckpointManager.inst.GetLastCheckpoint() != null)
         {
-            
             if (context.started)
             {
                 fillCircle.SetActive(true);
@@ -66,8 +63,11 @@ public class PlayerController : MonoBehaviour
             }
             if (context.performed)
             {
-                gameObject.transform.position = CheckpointManager.inst.GetLastCheckpoint().spawnPoint.position;
-                gameObject.transform.rotation = CheckpointManager.inst.GetLastCheckpoint().gameObject.transform.rotation;
+                gameObject.transform.SetPositionAndRotation(
+                    CheckpointManager.inst.GetLastCheckpoint().transform.position,
+                    CheckpointManager.inst.GetLastCheckpoint().transform.rotation
+                );
+
                 fillCircle.SetActive(false);
             }
             if (context.canceled)
