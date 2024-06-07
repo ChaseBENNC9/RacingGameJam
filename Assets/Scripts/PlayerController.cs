@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
             if (context.started)
             {
                 fillCircle.SetActive(true);
-                fillCircle.GetComponent<Animation>().Play("FillCircle");
+                fillCircle.GetComponent<Animator>().Play("FillCircle");
             }
             if (context.performed)
             {
