@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Vector3 direction;
     private Rigidbody rb;
+    public GameObject fillCircle;
 
     // Start is called before the first frame update
     void Start()
@@ -48,10 +49,27 @@ public class PlayerController : MonoBehaviour
 
     public void Respawn(InputAction.CallbackContext context)
     {
-        if (context.performed && CheckpointManager.inst.GetLastCheckpoint() != null)
+        if (CheckpointManager.inst.GetLastCheckpoint() != null)
         {
-            gameObject.transform.position = CheckpointManager.inst.GetLastCheckpoint().spawnPoint.position;
-            gameObject.transform.rotation = CheckpointManager.inst.GetLastCheckpoint().gameObject.transform.rotation;
+            if (context.started)
+            {
+                Debug.Log("Respawn started");
+                fillCircle.SetActive(true);
+                fillCircle.GetComponent<Animation>().Play("FillCircle");
+                Debug.Log("Respawn started");
+            }
+            if (context.performed)
+            {
+
+                gameObject.transform.position = CheckpointManager.inst.GetLastCheckpoint().spawnPoint.position;
+                gameObject.transform.rotation = CheckpointManager.inst.GetLastCheckpoint().gameObject.transform.rotation;
+                fillCircle.SetActive(false);
+            }
+            if (context.canceled)
+            {
+                Debug.Log("Respawn canceled");
+                fillCircle.SetActive(false);
+            }
         }
     }
 }
