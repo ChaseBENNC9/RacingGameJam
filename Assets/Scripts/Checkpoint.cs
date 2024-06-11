@@ -9,7 +9,6 @@
 
 using UnityEngine;
 
-
 public class Checkpoint : MonoBehaviour
 {
     public Material activatedMaterial; //Material for when the checkpoint is activated
@@ -18,10 +17,11 @@ public class Checkpoint : MonoBehaviour
     private bool isActivated = false; //Boolean to check if the checkpoint is activated
     public bool IsActivated
     {
-        get => isActivated; 
+        get => isActivated;
         set
         {
-            if (isActivated == value) return; //If the value is the same as the current value, it does nothing
+            if (isActivated == value)
+                return; //If the value is the same as the current value, it does nothing
             isActivated = value;
             if (isActivated) //When the value is changed it updates the material of the checkpoint corresponding to the value
             {
@@ -36,19 +36,11 @@ public class Checkpoint : MonoBehaviour
         }
     }
 
-    public float activatedTime = 0.0f; //Time when the checkpoint was activated
-
-
-
-
     void OnTriggerEnter(Collider other) //When the player triggers the checkpoint it is activated
-{
-    if (other.CompareTag("Player"))
     {
-        this.IsActivated = true;
+        if (other.CompareTag("Player"))
+        {
+            this.IsActivated = true;
+        }
     }
 }
-}
-
-
-
