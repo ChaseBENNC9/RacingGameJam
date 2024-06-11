@@ -1,12 +1,13 @@
 ///<remarks>
 /// Author: Erika Stuart
+/// Last Modified by: Chase Bennett-Hill
 /// Date Created: 30/5/2023
-/// Last Updated: 1/6/2023
+/// Last Updated: 11/6/2023
 /// Bugs: None
 /// </remarks>
 
 /// <summary>
-/// This script is used to move the player in the game using the input system.
+/// This script is used to control the player in the game using the input system.
 /// </summary>
 
 using System.Collections;

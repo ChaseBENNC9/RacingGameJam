@@ -12,8 +12,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class CheckpointManager : MonoBehaviour
 {
     private List<Checkpoint> checkpoints = new();
@@ -53,14 +51,15 @@ public class CheckpointManager : MonoBehaviour
                 activatedCheckpoints.Add(checkpoint);
             }
         }
-        checkpointText.text = "Checkpoints: \n" + activatedCheckpoints.Count + "/" + checkpoints.Count;
+        checkpointText.text =
+            "Checkpoints: \n" + activatedCheckpoints.Count + "/" + checkpoints.Count;
         if (AllCheckpointsActivated())
         {
             checkpointText.color = Color.green;
         }
     }
 
-    ///<summary>   
+    ///<summary>
     /// Check if all checkpoints have been activated
     /// </summary>
     ///<returns>True if all checkpoints have been activated, false otherwise</returns>
@@ -81,12 +80,9 @@ public class CheckpointManager : MonoBehaviour
     {
         return lastCheckpoint;
     }
-      public void SetLastCheckpoint(Checkpoint checkpoint)
+
+    public void SetLastCheckpoint(Checkpoint checkpoint)
     {
         lastCheckpoint = checkpoint;
     }
-
-
-
-
 }
