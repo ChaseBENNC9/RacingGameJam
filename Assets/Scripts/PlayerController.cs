@@ -63,10 +63,10 @@ public class PlayerController : MonoBehaviour
             }
             if (context.performed)
             {
-                gameObject.transform.SetPositionAndRotation(
-                    CheckpointManager.inst.GetLastCheckpoint().transform.position,
-                    CheckpointManager.inst.GetLastCheckpoint().transform.rotation
-                );
+                gameObject.transform.rotation = 
+                    CheckpointManager.inst.GetLastCheckpoint().transform.rotation;
+
+                gameObject.transform.position = CheckpointManager.inst.GetLastCheckpoint().spawnPoint.position;
                 rb.velocity = Vector3.zero;
 
                 fillCircle.SetActive(false);
