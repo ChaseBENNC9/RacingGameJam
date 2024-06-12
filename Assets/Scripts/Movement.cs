@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
 {
     public float motorTorque = 200;
     public float brakeTorque = 2000;
-    private int speed = 10000;
+    public int speed = 10000;
     public float steeringRange = 30;
     public float steeringRangeAtMaxSpeed = 10;
     public float centreOfGravityOffset = -1f;
