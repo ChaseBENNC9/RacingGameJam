@@ -2517,13 +2517,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510082518}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06540316, y: 0.000000059604638, z: -0, w: 0.997859}
-  m_LocalPosition: {x: 0.36, y: 1.6800003, z: -5.3}
+  m_LocalRotation: {x: 0.20813064, y: 0.000000059604638, z: -0, w: 0.978101}
+  m_LocalPosition: {x: 0.3599999, y: 6.9000015, z: -7.0999956}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1533075741}
-  m_LocalEulerAnglesHint: {x: 7.5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 24.026, y: 0, z: 0}
 --- !u!114 &510082522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,7 +2800,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a7ed2a7dd70c444c9f0f1b51f42136b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1533075739}
+      addedObject: {fileID: 1533075743}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 5a7ed2a7dd70c444c9f0f1b51f42136b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1533075742}
     - targetCorrespondingSourceObject: {fileID: -5287916851642620284, guid: 5a7ed2a7dd70c444c9f0f1b51f42136b,
         type: 3}
       insertIndex: -1
@@ -10130,24 +10134,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 519366882}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1533075739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533075738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db9d70cddab71a4d80b3a0b56e93c75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  motorTorque: 3000
-  brakeTorque: 3000
-  maxSpeed: 50
-  steeringRange: 10
-  steeringRangeAtMaxSpeed: 10
-  centreOfGravityOffset: -1
 --- !u!54 &1533075740
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10181,6 +10167,71 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 519366882}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1533075742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533075738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 6ef5ef0befae4ae48971a9c6d6a63bf1,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1533075743}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: Forwards
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 85244f5e-a043-42e4-9c87-94b9d9c28124
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1533075743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533075738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103c2d1d33b6a6b4bb327456ee828f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motorTorque: 3000
+  brakeTorque: 3000
+  speed: 50
+  steeringRange: 10
+  steeringRangeAtMaxSpeed: 10
+  centreOfGravityOffset: -1
 --- !u!1 &1542238860
 GameObject:
   m_ObjectHideFlags: 0

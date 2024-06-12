@@ -83,6 +83,7 @@ public class Movement : MonoBehaviour
         if (GameManager.currentGameState == GameState.Racing)
         {
             moveInput = context.ReadValue<Vector2>();
+            Debug.Log(moveInput);
             direction = new Vector3(moveInput.x, 0, moveInput.y);
         }
     }
