@@ -1,4 +1,4 @@
-///<remarks>
+ ///<remarks>
 /// Author: Erika Stuart
 /// Last Modified by: Chase Bennett-Hill
 /// Date Created: 30/5/2023
@@ -18,7 +18,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))] //Ensures that the object always has a rigidbody component
 public class PlayerController : MonoBehaviour
 {
-    private int speed = 20;
+    private int speed = 35;
     private int rotationSpeed = 100;
     private Vector2 moveInput;
     private Vector3 direction;
