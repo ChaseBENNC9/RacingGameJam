@@ -26,8 +26,7 @@ public class StartUI : MonoBehaviour
     public void EndTutorial()
     {
         tutCanvas.SetActive(false);
-        //SceneManager.LoadScene("UI Erika");
-        Debug.Log("Cue: Game Scene");
+        SceneManager.LoadScene("Main Scene");
     }
 
 }
