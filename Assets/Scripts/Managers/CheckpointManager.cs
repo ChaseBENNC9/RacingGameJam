@@ -33,7 +33,7 @@ public class CheckpointManager : MonoBehaviour
 
     void Start()
     {
-        checkpoints.AddRange(FindObjectsOfType<Checkpoint>());
+        checkpoints.AddRange(FindObjectsOfType<Checkpoint>()); //Finds all game objects with the Checkpoint script attached
         foreach (Checkpoint checkpoint in checkpoints)
         {
             checkpoint.IsActivated = false;
@@ -64,7 +64,7 @@ public class CheckpointManager : MonoBehaviour
     /// </summary>
     ///<returns>True if all checkpoints have been activated, false otherwise</returns>
 
-    public bool AllCheckpointsActivated()
+    public bool AllCheckpointsActivated() //Checks if all checkpoints have been activated
     {
         foreach (Checkpoint checkpoint in checkpoints)
         {
@@ -76,12 +76,13 @@ public class CheckpointManager : MonoBehaviour
         return true;
     }
 
-    public Checkpoint GetLastCheckpoint()
+
+    public Checkpoint GetLastCheckpoint() //Returns the last entered checkpoint
     {
         return lastCheckpoint;
     }
 
-    public void SetLastCheckpoint(Checkpoint checkpoint)
+    public void SetLastCheckpoint(Checkpoint checkpoint) //Sets the last entered checkpoint
     {
         lastCheckpoint = checkpoint;
     }
